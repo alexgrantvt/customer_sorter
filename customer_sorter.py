@@ -16,13 +16,6 @@ DEBUG_MODE = 2
 # Global variables
 insurance_companies = ["Geico", "MMG", "Progressive", "Statefarm", "Vermont Mutual"]
 
-def getDirs():
-    dirs = []
-    for item in os.listdir():
-        if os.path.isdir(item):
-            dirs.append(item)
-    return dirs
-
 def print_debug(msg, mode):
     if mode <= DEBUG_MODE:
         if mode == 0:
@@ -33,11 +26,13 @@ def print_debug(msg, mode):
             print("=== INFO =======", msg)
 
 def main():
-    items = getDirs()
-    for item in items:
+    for item in os.listdir():
         if item not in insurance_companies:
+            # Only car about folders that aren't the insurance company folders
             for insurance_company in insurance_companies:
                 if insurance_company.lower() in item.lower():
+                    # If an insurance company name is found in the folder name,
+                    # put it into that folder
                     print_debug("Found " + item + " not in the correct folder....", 2)
                     shutil.move(item, insurance_company)
                     print_debug("Moving " + item + " into " + insurance_company + " folder...", 2)
