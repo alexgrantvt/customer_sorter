@@ -28,17 +28,14 @@ def print_debug(msg, mode):
         if mode == 0:
             print("=== ERROR ======", msg)
         if mode == 1:
-            print("=== WARNING=====", msg)
+            print("=== WARNING ====", msg)
         if mode == 2:
             print("=== INFO =======", msg)
 
 def main():
     items = getDirs()
     for item in items:
-        if item in insurance_companies:
-            # Skip because it's an insurance company folder
-            continue
-        else:
+        if item not in insurance_companies:
             for insurance_company in insurance_companies:
                 if insurance_company.lower() in item.lower():
                     print_debug("Found " + item + " not in the correct folder....", 2)
