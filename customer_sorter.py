@@ -33,7 +33,7 @@ def main():
                 if insurance_company.lower() in item.lower():
                     # If an insurance company name is found in the folder name,
                     # put it into that folder
-                    print_debug("Found " + item + " not in the correct folder....", 2)
+                    print_debug("Found " + item + " not in the correct folder...", 2)
                     shutil.move(item, insurance_company)
                     print_debug("Moving " + item + " into " + insurance_company + " folder...", 2)
 
