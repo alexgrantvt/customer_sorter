@@ -36,9 +36,6 @@ def main():
                     print_debug("Found " + item + " not in the correct folder...", 2)
                     shutil.move(item, insurance_company)
                     print_debug("Moving " + item + " into " + insurance_company + " folder...", 2)
-
-            # Parse unexpected filenames to locate insurance
-            # company names. Then move them.
     return
 
 if __name__ == "__main__":
