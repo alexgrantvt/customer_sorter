@@ -28,7 +28,7 @@ def print_debug(msg, mode):
 def main():
     for item in os.listdir():
         if item not in insurance_companies:
-            # Only car about folders that aren't the insurance company folders
+            # Only care about folders that aren't the insurance company folders
             for insurance_company in insurance_companies:
                 if insurance_company.lower() in item.lower():
                     # If an insurance company name is found in the folder name,
