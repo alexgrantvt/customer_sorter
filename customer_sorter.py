@@ -14,7 +14,8 @@ DEBUG_MODE = 2
 # 2 = INFO
 
 # Global variables
-insurance_companies = ["Geico", "MMG", "Progressive", "Statefarm", "Vermont Mutual"]
+insurance_companies = ["Geico", "MMG", "Progressive", "Statefarm", "Vermont Mutual", "Allstate", "American Family", 
+                       "General Liberty Insurance", "Trumbull Hartford"]
 
 def print_debug(msg, mode):
     if mode <= DEBUG_MODE:
@@ -30,7 +31,13 @@ def main():
         if item not in insurance_companies:
             # Only care about folders that aren't the insurance company folders
             for insurance_company in insurance_companies:
-                if insurance_company.lower() in item.lower():
+                if insurance_company.lower() == "trumbull hartford":
+                    for token in insurance_company.lower().split():
+                        if token in item.lower():
+                            print_debug("Found " + item + " not in the correct folder...", 2)
+                            shutil.move(item, insurance_company)
+                            print_debug("Moving " + item + " into " + insurance_company + " folder...", 2)
+                elif insurance_company.lower() in item.lower():
                     # If an insurance company name is found in the folder name,
                     # put it into that folder
                     print_debug("Found " + item + " not in the correct folder...", 2)
